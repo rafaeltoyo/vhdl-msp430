@@ -1,0 +1,37 @@
+v 3
+file . "processador_tb.vhd" "20170511005326.000" "20170510225017.685":
+  entity processador_tb at 1( 0) + 0 on 81;
+  architecture a_processador_tb of processador_tb at 6( 104) + 0 on 82;
+file . "pr_execute.vhd" "20170511015006.000" "20170510225016.556":
+  entity pr_execute at 1( 0) + 0 on 77;
+  architecture a_pr_execute of pr_execute at 19( 827) + 0 on 78;
+file . "pr_instruction_fetch.vhd" "20170511011858.000" "20170510225015.447":
+  entity pr_instruction_fetch at 1( 0) + 0 on 73;
+  architecture a_pr_instruction_fetch of pr_instruction_fetch at 15( 554) + 0 on 74;
+file . "state_machine.vhd" "20170510183404.000" "20170510225014.348":
+  entity state_machine at 1( 0) + 0 on 69;
+  architecture a_state_machine of state_machine at 13( 249) + 0 on 70;
+file . "reg_instr.vhd" "20170511004444.000" "20170510225013.247":
+  entity reg_instr at 1( 0) + 0 on 65;
+  architecture a_reg_instr of reg_instr at 12( 463) + 0 on 66;
+file . "rom.vhd" "20170511014718.000" "20170510225012.146":
+  entity rom at 1( 0) + 0 on 61;
+  architecture a_rom of rom at 53( 958) + 0 on 62;
+file . "alu.vhd" "20170510225850.000" "20170510225011.598":
+  entity alu at 1( 0) + 0 on 59;
+  architecture a_alu of alu at 15( 628) + 0 on 60;
+file . "reg_base.vhd" "20170510102224.000" "20170510225012.695":
+  entity reg_base at 1( 0) + 0 on 63;
+  architecture a_reg_base of reg_base at 12( 462) + 0 on 64;
+file . "reg_bank.vhd" "20170510223126.000" "20170510225013.793":
+  entity reg_bank at 1( 0) + 0 on 67;
+  architecture a_reg_bank of reg_bank at 20( 880) + 0 on 68;
+file . "control_unit.vhd" "20170511010212.000" "20170510225014.898":
+  entity control_unit at 1( 0) + 0 on 71;
+  architecture a_control_unit of control_unit at 21( 568) + 0 on 72;
+file . "pr_instruction_decode.vhd" "20170511005232.000" "20170510225015.999":
+  entity pr_instruction_decode at 1( 0) + 0 on 75;
+  architecture a_pr_instruction_decode of pr_instruction_decode at 20( 919) + 0 on 76;
+file . "processador.vhd" "20170511005644.000" "20170510225017.116":
+  entity processador at 1( 0) + 0 on 79;
+  architecture a_processador of processador at 16( 415) + 0 on 80;

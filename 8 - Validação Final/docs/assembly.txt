@@ -1,0 +1,74 @@
+*Recomenda-se abrir no Notepad++
+**Tabela usada para gerar: https://docs.google.com/spreadsheets/d/1QUa45D9lwpwTP4zJEOd4OCaB1dd_fUGo3VvLcuIfu5g/edit?usp=sharing
+
+Código Assembly:
+
+				MOV.W #1,R1			--Const 1
+				MOV.W #33,R3		--Const Limite
+InitLoop:		MOV.W R2,@R2		--Parte de 0 e preenche ADDR <= "ADDR" (value)
+				ADD.W R1,R2			--R2+1
+				MOV.W R2,R4			--R4 temp
+				SUB.W R3,R4			--R4 = R4 - R3 ( R2 passou do limite? )
+				JL InitLoop			--Enquanto R2 < R3 pula (loop de 1 ate Limite)
+				MOV.W #0,@R1		--Numero 1 nao eh primo
+				MOV.W #2,R2			--Comecar loop de R2 de 2
+VerifPrimo:		MOV.W @R2,R4	
+				ADD.W #0,R4			--Ver o numero em R4
+				JZ FimPrimo			--Se tinha zero, nao eh primo
+				MOV.W @R2,R5		--Senao eh primo e vamos tirar seus multiplos
+MultLoop:		ADD.W @R2,R5		--proximo multiplo
+				MOV.W R5,R4			--temp
+				SUB.W R3,R4			--Ver se nao acessa memoria undefined
+				JL MarcaNaoPrimo	--Se R4 < R3 sem problemas
+				JMP FimPrimo		--Senao terminou
+MarcaNaoPrimo:	MOV.W #0,@R5		--Indicar que nao eh primo esse numero
+				JMP MultLoop		--Vamos incrementa o proximo numero
+FimPrimo:		ADD.W R1,R2			--Acabou de marca os multiplos, logo incrementa +1
+				MOV.W R2,R4			--temp
+				SUB.W R3,R4			--Ver se nao acessa memoria undefined
+				JL VerifPrimo		--Enquanto R4 < R3 temos numero ainda para analisar
+				MOV.W R1,R2			--Comecar em 1
+PrintLoop:		MOV.W @R2,R6		--'Printar'
+				ADD.W R1,R2			--Incrementar
+				MOV.W R2,R4			--temp
+				SUB.W R3,R4			--R4 = R4 - R3 ( R2 passou do limite? )
+				JL PrintLoop		--Enquanto R2 < R3 pula (loop de 1 ate Limite)
+
+Codificação binária:
+
+00100000000110001 -- MOV.W @PC+,R1
+00000000000000001 -- #1
+00100000000110011 -- MOV.W @PC+,R3
+00000000000100001 -- #33
+00100001010000010 -- MOV.W R2,@R2
+00101000100000010 -- ADD.W R1,R2
+00100001000000100 -- MOV.W R2,R4
+01000001100000100 -- SUB.W R3,R4
+00011101111111100 -- JL -4
+00100000010110001 -- MOV.W @PC+,@R1
+00000000000000000 -- #0
+00100000000110010 -- MOV.W @PC+,R2
+00000000000000010 -- #2
+00100001000100100 -- MOV.W @R2,R4
+00101000000110100 -- ADD.W @PC+,R4
+00000000000000000 -- #0
+00010010000001010 -- JZ 10
+00100001000100101 -- MOV.W @R2,R5
+00101001000100101 -- ADD.W @R2,R5
+00100010100000100 -- MOV.W R5,R4
+01000001100000100 -- SUB.W R3,R4
+00011100000000010 -- JL 2
+00011110000000100 -- JMP 4
+00100000010110101 -- MOV.W @PC+,@R5
+00000000000000000 -- #0
+00011111111111001 -- JMP -7
+00101000100000010 -- ADD.W R1,R2
+00100001000000100 -- MOV.W R2,R4
+01000001100000100 -- SUB.W R3,R4
+00011101111110000 -- JL -16
+00100000100000010 -- MOV.W R1,R2
+00100001000100110 -- MOV.W @R2,R6
+00101000100000010 -- ADD.W R1,R2
+00100001000000100 -- MOV.W R2,R4
+01000001100000100 -- SUB.W R3,R4
+00011101111111100 -- JL -4

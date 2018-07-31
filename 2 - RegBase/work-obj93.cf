@@ -1,0 +1,13 @@
+v 3
+file . "regbase.vhd" "20170413193806.000" "20170413163812.886":
+  entity regbase at 1( 0) + 0 on 49;
+  architecture a_regbase of regbase at 17( 721) + 0 on 50;
+file . "reg16bits_tb.vhd" "20170413184238.000" "20170413154431.996":
+  entity reg16bits_tb at 1( 0) + 0 on 23;
+  architecture a_reg16bits_tb of reg16bits_tb at 6( 127) + 0 on 24;
+file . "reg16bits.vhd" "20170413184138.000" "20170413163812.830":
+  entity reg16bits at 1( 0) + 0 on 47;
+  architecture a_reg16bits of reg16bits at 12( 463) + 0 on 48;
+file . "regbase_tb.vhd" "20170413193352.000" "20170413163812.941":
+  entity regbase_tb at 1( 0) + 0 on 51;
+  architecture a_regbase_tb of regbase_tb at 6( 125) + 0 on 52;
